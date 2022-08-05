@@ -19,6 +19,7 @@ const ctcAlice = accAlice.contract(backend);
 const ctcBob = accBob.contract(backend, ctcAlice.getInfo());
 
 const player = (who) => ({
+ ...stdlib.hasRandom,
  getGuess: () => {
   const guess = (Math.floor(Math.random() * 10));
   console.log(`${who} guessed ${guess}`);
