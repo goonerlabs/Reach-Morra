@@ -34,6 +34,9 @@ const player = (who) => ({
 
  seeOutcome: (outcome) => {
   console.log(`${who} saw outcome ${OUTCOME[outcome]}`);
+ },
+ informTimeout: () => {
+  console.log(`${who} observed a timeout.`);
  } 
 })
 
@@ -42,11 +45,14 @@ await Promise.all([
   // interact interface
   ...player('Alice'),
   wager: stdlib.parseCurrency(10),
+  deadline: 10,
  }),
  ctcBob.p.Bob({
   // interact interface 
   ...player('Bob'),
-  acceptWager: (amt) => console.log(`Bob accepts wager of ${fmt(amt)}`),
+  acceptWager: (amt) => {
+   console.log(`Bob accepts wager of ${fmt(amt)}`)
+  }
  }),
 ]);
 
